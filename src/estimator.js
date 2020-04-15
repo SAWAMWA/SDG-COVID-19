@@ -12,20 +12,20 @@ const data = {
       population:document.getElementById('population').value,
       totalHospitalBeds:document.getElementById('hospitalbeds').value,
       impact:{
-          currentlyInfected: function(){return data.reportedCases*10;},
-          infectionByRequestedTime:function(){returnMath.floor(data.impact.currentlyInfected()*Math.pow(2 ,(data.timeToElapse/3))) ;},
-          severeCasesByRequestedTime:function() {return Math.floor(data.impact.infectionByRequestedTime()*15/100);},
-          hcasesOfICUByrequestedTime:function() {return Math.floor(data.impact.infectionByRequestedTime()*5/100);},
-          casesOfVentilatorsByRequestedTime:function() {return Math.floor(data.impact.infectionByRequestedTime()*2/100);},
+          currentlyInfected: function() {return data.reportedCases * 10;},
+          infectionByRequestedTime:function() {returnMath.floor(data.impact.currentlyInfected() * Math.pow(2 ,(data.timeToElapse/3)));},
+          severeCasesByRequestedTime:function() {return Math.floor(data.impact.infectionByRequestedTime() * 0.15);},
+          hcasesOfICUByrequestedTime:function() {return Math.floor(data.impact.infectionByRequestedTime()* 0.15);},
+          casesOfVentilatorsByRequestedTime:function() {return Math.floor(data.impact.infectionByRequestedTime() * 0.02);},
           dollarsInFlight:function() {return Math.floor((data.impact.infectionByRequestedTime()*0.65*data.region.avgDailyIncomeInUSD)/30)}
         },
       severeImpact:{
           currentlyInfected:function severe() {return data.reportedCases*50;},
-          infectionByRequestedTime:function() {return Math.floor(data.severeImpact.currentlyInfected()*Math.pow(2 ,(data.timeToElapse/3)))},
-          severeCasesByRequestedTime:function() {return Math.floor(data.severeImpact.infectionByRequestedTime()*15/100);},
+          infectionByRequestedTime:function() {return Math.floor(data.severeImpact.currentlyInfected()*Math.pow(2 ,(data.timeToElapse / 3)))},
+          severeCasesByRequestedTime:function() {return Math.floor(data.severeImpact.infectionByRequestedTime()* 0.15);},
           hospitalBedsByRequestedTime:function() { return Math.floor((data.totalHospitalBeds*0.35)-(data.severeImpact.severeCasesByRequestedTime()))},
-          casesOfICUByrequestedTime:function() {return Math.floor(data.severeImpact.infectionByRequestedTime()*5/100);},
-          casesOfVentilatorsByRequestedTime:function() {return Math.floor(data.severeImpact.infectionByRequestedTime()*2/100);},
+          casesOfICUByrequestedTime:function() {return Math.floor(data.severeImpact.infectionByRequestedTime() * 0.05);},
+          casesOfVentilatorsByRequestedTime:function() {return Math.floor(data.severeImpact.infectionByRequestedTime()* 0.02);},
           dollarsInFlight:function() {return  Math.floor((data.severeImpact.infectionByRequestedTime()*0.65*data.region.avgDailyIncomeInUSD)/30)},
         }
       }
